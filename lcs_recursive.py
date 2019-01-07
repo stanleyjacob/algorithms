@@ -1,4 +1,6 @@
 
+
+# worst case O(2^(m+n))
 def lcs_length(string1, string2, int m, int n):
   if m == 0 or n == 0:
     return 0
