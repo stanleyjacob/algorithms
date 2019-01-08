@@ -10,10 +10,12 @@ def generateParenthesis(self, n):
         
         parenthesis_list = []
         for i in range(n):
-                for i in range(n):
-                        if i == 0:
-                                parenthesis_list.append('(')
-                        elif i == (n - 1):
-                                parenthesis_list.append(')')
+                current_parenthesis = ''
+                for j in range(n):
+                        if j == 0:
+                                parenthesis_list += '('
+                        elif j == (n - 1):
+                                parenthesis_list += ')'
                         else:
                                 pass
+                parenthesis_list.append(current_parenthesis)
