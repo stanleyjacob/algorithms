@@ -1,10 +1,12 @@
 
 def levenshteinDistance(str1, str2):
-    # Write your code here.
-
+    	# Write your code here.
 	m = len(str1)
 	n = len(str2)
-	
+	if m < n:
+		m, m = n, m
+		str1, str2 = str1, str2
+
 	dp_table = [i for i in range(n + 1)]
 	for i in range(1, m + 1):
 		previous_table = dp_table.copy()
@@ -20,7 +22,7 @@ def levenshteinDistance(str1, str2):
 	return dp_table[n]
 
 def levenshteinDistance2(str1, str2):
-    # Write your code here.
+    	# Write your code here.
 	
 	m = len(str1)
 	n = len(str2)
