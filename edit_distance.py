@@ -1,19 +1,35 @@
-def levenshteinDistance1(str1, str2):
+
+def levenshteinDistance(str1, str2):
+    # Write your code here.
+
+	m = len(str1)
+	n = len(str2)
+	
+	dp_table = [i for i in range(n + 1)]
+	for i in range(1, m + 1):
+		previous_table = dp_table.copy()
+		dp_table[0] = i
+		for j in range(1, n + 1):
+			if str1[i - 1] != str2[j - 1]:
+				dp_table[j] = 1 + min([previous_table[j], \
+									 dp_table[j - 1], \
+									previous_table[j-1]])
+			else:
+				dp_table[j] = previous_table[j-1]
+
+	return dp_table[n]
+
+def levenshteinDistance2(str1, str2):
     # Write your code here.
 	
 	m = len(str1)
 	n = len(str2)
-	dp_table = [[0 for j in range(n + 1)] for i in range(m + 1)]
-	
+	dp_table = [[j for j in range(n + 1)] for i in range(m + 1)]
 	for i in range(m + 1):
-		for j in range(n + 1):
-			if i == 0:
-				dp_table[0][j] = j
-				continue
-			if j == 0:
-				dp_table[i][0] = i
-				continue
-				
+		dp_table[i][0] = i
+	for i in range(1, m + 1):
+		for j in range(1, n + 1):
+			
 			if str1[i - 1] != str2[j - 1]:
 				dp_table[i][j] = 1 + min([dp_table[i - 1][j], \
 									 dp_table[i][j - 1], \
