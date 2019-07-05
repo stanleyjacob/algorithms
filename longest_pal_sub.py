@@ -1,0 +1,3 @@
+def longestPalindromicSubstring(string):
+    pass
+	
